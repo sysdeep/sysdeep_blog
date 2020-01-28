@@ -8,6 +8,8 @@ Tags: history, os, dos, ms
 Экраны загруженной в виртуальной машине MS DOS 1.1
 
 
+![Alt text]({filename}./1.jpg)
+
 ![Alt text]({attach}1.jpg)
 
 
