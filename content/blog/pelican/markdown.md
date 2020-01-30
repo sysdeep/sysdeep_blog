@@ -1,6 +1,7 @@
 Title: Markdown syntax for Pelican Quick Reference
 Date: 2014-06-20 15:28
 Modified: 2014-12-23 10:02
+Category: Development
 Tags: development, markdown
 
 

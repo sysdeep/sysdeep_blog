@@ -1,7 +1,7 @@
 Title: Pelican intro
 Date: 2020-01-21 20:20
-Category: Other
-Tags: python
+Category: Development
+Tags: python, pelican
 
 
 

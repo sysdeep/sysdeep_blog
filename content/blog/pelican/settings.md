@@ -1,6 +1,6 @@
 Title: Pelican settings
 Date: 2014-06-16 10:20
-Category: Pelican
+Category: Development
 Tags: pelican, settings
 Summary: Short version for index and feeds
 

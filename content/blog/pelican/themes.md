@@ -1,6 +1,8 @@
 Title: Темы для пеликана
 Date: 2014-06-20 15:28
 Modified: 2014-12-23 10:02
+Slug: pelican-themes
+Category: Development
 Tags: pelican, themes, development
 
 
