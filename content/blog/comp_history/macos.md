@@ -2,7 +2,7 @@ Title: MacOs 1
 Date: 2020-01-28 20:30
 Tags: history, os, macos, apple
 Category: History
-Status: draft1
+--Status: draft
 
 
 
