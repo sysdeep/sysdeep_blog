@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+    <div class="main-body-inner">
+        <section id="main">
+            <div class="main-body-header">
+                    <h1 class="header"><em class="page-title-link">{{ .Title }}</em></h1>
+            </div>
+
+            
+
+            <div class="main-body-content">
+                    
+             
+                <article class="article article-single article-type-post">
+                    <div class="article-inner">
+                        <div class="article-entry">
+                            {{ .Content }}
+                        </div>
+
+                        
+                    </div>
+                </article>
+                        
+            </div>
+
+        </section>
+    </div>
+
+    
+{{ end }}

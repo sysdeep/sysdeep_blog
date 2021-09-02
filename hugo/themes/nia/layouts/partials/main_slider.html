@@ -1,0 +1,103 @@
+    
+    
+    
+    
+    <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 720px; height: 290px; overflow: hidden;">
+    	
+    	<!-- Slides Container -->
+	    <!-- <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;"> -->
+	    <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 720px; height: 290px;">
+
+            {{ range .Params.Slides }}
+                <div>
+                    <a u="image" href="{{ .url | absURL }}">
+                        <img u="image" src="{{ .img }}" />
+                    </a>
+                </div>
+            {{ end }}
+	    	
+    	</div>
+
+
+    	<!--#region Bullet Navigator Skin Begin -->
+        <!-- Help: http://www.jssor.com/development/slider-with-bullet-navigator-jquery.html -->
+        <style>
+            /* jssor slider bullet navigator skin 06 css */
+            /*
+            .jssorb06 div           (normal)
+            .jssorb06 div:hover     (normal mouseover)
+            .jssorb06 .av           (active)
+            .jssorb06 .av:hover     (active mouseover)
+            .jssorb06 .dn           (mousedown)
+            */
+            .jssorb06 {
+                position: absolute;
+            }
+            .jssorb06 div, .jssorb06 div:hover, .jssorb06 .av {
+                position: absolute;
+                /* size of bullet elment */
+                width: 18px;
+                height: 18px;
+                background: url(../img/b16c.png) no-repeat;
+                overflow: hidden;
+                cursor: pointer;
+            }
+            .jssorb06 div { background-position: -6px -6px; }
+            .jssorb06 div:hover, .jssorb06 .av:hover { background-position: -36px -6px; }
+            .jssorb06 .av { background-position: -66px -6px; }
+            .jssorb06 .dn, .jssorb06 .dn:hover { background-position: -96px -6px; }
+        </style>
+        <!-- bullet navigator container -->
+        <div u="navigator" class="jssorb06" style="bottom: 16px; right: 6px;">
+            <!-- bullet navigator item prototype -->
+            <div u="prototype"></div>
+        </div>
+        <!--#endregion Bullet Navigator Skin End -->
+
+        
+    </div>
+    
+
+
+
+
+    
+    <script src='{{ "js/jssor.slider.mini.js" | absURL }}'></script>
+    <script>
+            jQuery(document).ready(function ($) {
+                var options = { 
+                    $FillMode: 1,
+                    $AutoPlay: true,
+                    $SlideDuration: 1000,					// transition
+                    $AutoPlayInterval: 5000,				// timeout
+                    $BulletNavigatorOptions: {
+                        $Class: $JssorBulletNavigator$,
+                        $ChanceToShow: 2,
+                        $AutoCenter: 1,
+                    }
+                };
+                var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+    
+    
+    
+                //responsive code begin
+                //you can remove responsive code if you don't want the slider scales
+                //while window resizes
+                function ScaleSlider() {
+                    var parentWidth = $('#slider1_container').parent().width();
+                    if (parentWidth) {
+                        jssor_slider1.$ScaleWidth(parentWidth);
+                    }
+                    else
+                        window.setTimeout(ScaleSlider, 30);
+                }
+                //Scale slider after document ready
+                ScaleSlider();
+                                                
+                //Scale slider while window load/resize/orientationchange.
+                $(window).bind("load", ScaleSlider);
+                $(window).bind("resize", ScaleSlider);
+                $(window).bind("orientationchange", ScaleSlider);
+                //responsive code end
+            });
+        </script>

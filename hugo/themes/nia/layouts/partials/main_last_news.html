@@ -1,0 +1,56 @@
+
+	
+    <!-- <h5><%= __('sidebar.recents') %></h5> -->
+    <div class="widget">
+        <ul id="recent-post" class="<%= (theme.thumbnail?'':'no-thumbnail') %>">
+
+                {{ $section := where .Site.Pages "Type" "news" }}
+
+                {{  range first 4 $section }}
+                {{/* range $section */}}
+                    
+                
+                    {{ if ne .Kind "section"}}
+
+
+            
+                        <li style="border: none">
+
+                            
+                                <div class="item-thumbnail">
+                                        <a href="{{ .URL }}" class="thumbnail">
+
+
+                                            {{ if .Params.Cover }}
+                                                <span style="background-image:url({{ .Params.Cover }})" alt="{{ .Title }}" class="thumbnail-image"></span>
+                                            {{ else }}
+                                                <span class="thumbnail-image thumbnail-none"></span>
+                                            {{ end }}
+                                        </a>
+                                    
+                                    <div class="item-date">{{ .PublishDate.Format "2006-01-02" }}</div>
+                                </div>
+                                
+                            
+                            
+                            <div class="item-inner">
+                                
+                                <div class="item-title"><a href="{{ .URL }}" class="title" title="{{ .Title }}">
+                                    {{ .Title | truncate 35 }}
+                                </a></div>
+                                
+                                
+                                <div class="">
+                                    {{ .Summary | truncate 120 }}
+                                </div>
+                            </div>
+                        </li>
+                    {{ end }}
+            
+                {{ end }}
+
+
+
+        </ul>
+    </div>
+

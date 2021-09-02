@@ -1,0 +1,140 @@
+{{ define "main" }}
+
+    news/list!!!
+    <div class="main-body-inner">
+        <section id="main">
+            <div class="main-body-header">
+                <h1 class="header"><em class="page-title-link">{{ .Title }}</em></h1>
+            </div>
+            
+            {{ .Content }}
+
+
+
+            <ul class="tags">
+                {{ range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+                 <li><a href="{{ .Permalink }}">{{ .Title}}</a></li>
+                {{ end }}
+              </ul>
+
+            
+
+            <div class="main-body-content">
+                <section class="archives-wrap">
+                    <!-- <div class="archive-year-wrap">
+                        <a href="/archives/2018" class="archive-year"><i class="icon" id="icon-calendar-o"></i>2018</a>
+                    </div> -->
+
+                    <div class="archives">
+
+
+
+                        {{ $section := .Paginate (where .Data.Pages "Section" .Section) }}
+                        
+
+                        {{/* $section := where .Data.Pages "Section" .Section */}}
+
+
+
+                        
+
+
+
+                        
+
+                       <!-- располагаем по 2 новости в строке -->
+                      
+
+                        {{ range $index, $page := $section.Pages }}
+
+
+                            {{ if eq (mod $index 2) 0 }}
+                                <div class="article-row">
+                            {{ end }}
+
+
+                            
+                        
+                            <article class="article article-summary">
+                                <div class="article-summary-inner">
+                                    <!-- img -->
+                                    <div class="item-thumbnail">
+                                        <a href="{{ .URL }}" class="thumbnail">
+
+
+                                            {{ if .Params.Cover }}
+                                                <span style="background-image:url({{ .Params.Cover }})" alt="{{ .Title }}" class="thumbnail-image"></span>
+                                            {{ else }}
+                                                <span class="thumbnail-image thumbnail-none"></span>
+                                            {{ end }}
+                                        </a>
+                                    </div>
+
+
+                                    <!-- meta -->
+                                    <div class="article-meta">
+                                        <p class="date">{{ .PublishDate.Format "2006-01-02" }}</time></p>
+                                    </div>
+    
+                                    <!-- title -->
+                                    <h2 class="article-title">
+                                        <a href="{{ .URL }}" class="title">
+                                            {{ .Title }}
+                                        </a>
+                                    </h2>
+    
+                                    <!-- intro -->
+                                    <p class="article-excerpt">{{ .Summary | truncate 200  }}</p>
+                                </div>
+                            </article>
+
+                         
+                            {{ if eq (mod $index 2) 1 }}
+                                </div>
+                            {{ end }}
+                        {{ end }}
+
+
+
+
+                        <!-- paginator -->
+                        <nav id="page-nav">
+                                <span class="pages">
+                                    Страница {{ $section.PageNumber }} из {{ $section.TotalPages }}</span>
+
+
+                                {{ if $section.HasPrev }}
+                                    <a class="extend prev" rel="prev" href="{{ $section.Prev.URL }}">«</a>
+                                {{ end }}
+
+
+
+                                {{ range $section.Pagers }}
+                                    
+                                    {{ if eq .PageNumber $section.PageNumber }}
+                                        <span class="page-number current">{{ .PageNumber }}</span>
+                                    {{ else }}
+                                        <a class="page-number" href="{{ .URL }}" title="{{ . }}">
+                                            {{ .PageNumber }}
+                                        </a>
+                                    {{ end }}
+
+                                {{ end }}
+
+                             
+                                
+                                
+                                {{ if $section.HasNext }}
+                                    <a class="extend next" rel="next" href="{{ $section.Next.URL }}">»</a>
+                                {{ end }}
+                               
+                        </nav>
+                    </div>
+                </section>
+            </div>
+
+        </section>
+    </div>
+
+    
+{{ end }}

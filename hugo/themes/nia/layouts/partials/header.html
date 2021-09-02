@@ -1,0 +1,100 @@
+<header>
+
+
+
+	<div class="navbar">
+  		<section class="navbar-section">
+    		<a href="{{ .Site.BaseURL }}" class="navbar-brand mr-2">Главная</a>
+   			{{ if .Site.Menus.main }}
+		
+				{{ range .Site.Menus.main }}
+					<a class="btn btn-link" href="{{ .URL }}" title="{{ .Name }} page">
+						{{ .Name }}
+					</a>
+				{{ end }}
+
+      		{{ end }}
+  		</section>
+  		
+  		<!-- <section class="navbar-section">
+    		<div class="input-group input-inline">
+      			<input class="form-input" type="text" placeholder="search">
+      			<button class="btn btn-primary input-group-btn">Search</button>
+    		</div>
+  		</section> -->
+	</div>
+
+
+	
+
+
+
+	<!-- <div id="header-outer" class="outer">
+		<div class="container">
+			<div class="container-inner">
+				<div id="header-title">
+					<div class="logo-wrap">
+						<a href="/" class="logo"></a>
+					</div>
+					<div class="subtitle-wrap">
+						<p class="subtitle">Системы технологической автоматики</p>
+					</div>
+
+					<div class="subinfo">
+						<p>
+							<a href="tel: +7 (484) 397-90-83" title="Основной номер">
+								<i class="icon" id="icon-phone"></i> +7 (484) 397-90-83
+							</a>
+						</p>
+						<p>
+							<a href="tel: +7 (495) 996-35-46" title="Прямой московский номер">
+								<i class="icon" id="icon-phone"></i> +7 (495) 996-35-46
+							</a>
+						</p>
+						<p>
+							<a title="Отдел продаж" href="/about/contacts/#Отдел_продаж">
+								<i class="fa fa-link" aria-hidden="true"></i> Отдел продаж
+							</a>
+						</p>
+
+						<p></p>
+
+						
+						
+						<p>
+							<a class="btn btn-success btn-default click-btn" data-toggle="modal" data-target="#call_me" title="Обратный звонок" href="#call_me" role="button">Обратный звонок</a>
+						</p>
+
+						
+
+					</div>
+				</div>
+
+
+				<div id="header-inner" class="nav-container">
+					<a id="main-nav-toggle" class="nav-icon"></a>
+					<div class="nav-container-inner">
+						<ul id="main-nav">
+							<li class="main-nav-list-item" style="max-width: 200px">
+								<a class="main-nav-list-link" href="{{ .Site.BaseURL }}">
+									Главная
+								</a>
+							</li>
+
+							{{ if .Site.Menus.main }}
+    						
+      							{{ range .Site.Menus.main }}
+      							<li class="main-nav-list-item" style="max-width: 200px">
+        							<a class="main-nav-list-link" href="{{ .URL }}" title="{{ .Name }} page">
+          								{{ .Name }}
+        							</a>
+      							</li>
+      							{{ end }}
+					      	{{ end }}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> -->
+</header>

@@ -1,0 +1,69 @@
+{{ define "main" }}
+
+   tags/list.html
+
+
+
+   <div class="main-body-inner">
+        <section id="main">
+            <div class="main-body-header">
+                <h1 class="header"><em class="page-title-link">{{ .Title }}</em></h1>
+            </div>
+
+            {{ .Content }}
+
+          
+
+            <hr/>
+            <ul id="all-tags">
+                    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                      <li><a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}">{{ $name }}</a></li>
+                    {{ end }}
+                  </ul>
+
+                  <hr/>
+
+
+                
+
+                  <!-- <ul class="tags">
+                        {{ range ($.Site.GetPage "taxonomyTerm" "tags").Pages }}
+                         <li><a href="{{ .Permalink }}">{{ .Title}}</a></li>
+                        {{ end }}
+                      </ul>
+
+                      <hr/> -->
+
+            <div class="main-body-content">
+                    <section class="archives-wrap">
+                        <!-- <div class="archive-year-wrap">
+                            <a href="/archives/2018" class="archive-year"><i class="icon" id="icon-calendar-o"></i>2018</a>
+                        </div> -->
+    
+                        <div class="archives">
+                            {{ $section := where .Data.Pages "Section" .Section }}
+                            {{ range  $section }}
+                                <div class="relative w-100  mb4 bg-white">
+
+
+                                        <h1 class="f3 near-black">
+                                                <a href="{{ .URL }}" class="link black dim">
+                                                {{ .Title }}
+                                                </a>
+                                            </h1>
+                                            <div class="nested-links f5 lh-copy nested-copy-line-height">
+                                                {{ .Summary  }}
+                                            </div>
+                                <!-- {{ partial "summary.html" . }} -->
+                                </div>
+                            {{ end }}
+                        </div>
+                    </section>
+                </div>
+
+        </section>
+    </div>
+
+
+    
+{{ end }}

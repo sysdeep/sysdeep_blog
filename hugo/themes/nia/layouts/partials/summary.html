@@ -1,0 +1,28 @@
+<div class="m-2 py-2">
+	<div >
+		<!-- <span class="f6 db">{{ humanize .Section }}</span> -->
+		<h3>
+			<a href="{{ .URL }}" class="link black dim">
+				{{ .Title }}
+			</a>
+		</h3>
+
+		<div>
+			{{ .Date }}
+		</div>
+
+		<!-- {{ .Params.tags }}
+		{{ .Params.categories }} -->
+
+		<div>
+			{{ .Summary  }}
+		</div>
+
+		<div>
+			<a href="{{ .URL }}" class="float-right">
+				Далее
+			</a>
+		</div>
+
+	</div>
+</div>
