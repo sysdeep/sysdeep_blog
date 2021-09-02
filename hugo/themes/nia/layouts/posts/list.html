@@ -1,0 +1,72 @@
+{{ define "main" }}
+	
+	
+	<!-- section description -->
+	<h3>{{ .Title }}</h3>
+
+	<article class="cf pa3 pa4-m pa4-l">
+			<div class="measure-wide-l center f4 lh-copy nested-copy-line-height nested-links nested-img mid-gray">                
+				{{ .Content }}
+			</div>
+	</article>
+	<!-- section description -->
+
+	<div class="columns">
+		<div class="column col-9">
+			{{ range  .Pages }}
+
+
+				<div class="relative w-100  mb4 bg-white">
+					{{ partial "summary.html" . }}
+				</div>
+			{{ end }}
+	
+		</div>
+		<div class="column col-3">
+			
+
+				{{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title h5">
+								<a href='{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}'>{{ $taxonomyname }}</a>
+							</div>
+						</div>
+						<div class="card-body">
+
+
+							{{ range $key, $value := $taxonomy }}
+							<span class="label mb-1">
+								<a href='{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}'> {{ $key }} </a>
+							</span>
+							  {{ end }}
+
+
+						</div>
+					</div>
+				  
+				{{ end }}
+
+
+		</div>
+	</div>
+
+
+
+
+	
+			
+
+
+	<!-- <div class="mw8 center">
+		{{ $section := where .Data.Pages "Section" .Section }}
+		<section class="flex-ns flex-wrap justify-around mt5">
+			{{ range  $section }}
+				<div class="relative w-100  mb4 bg-white">
+					{{ partial "summary.html" . }}
+				</div>
+			{{ end }}
+		</section> -->
+  
+	</div>
+{{ end }}
