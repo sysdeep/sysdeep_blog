@@ -1,11 +1,11 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'sysDeep site'
 theme1 = "ananke"
 theme = "nia"
 
 
-summaryLength = 3
+summaryLength = 10
 
 [menu]
     [[menu.main]]

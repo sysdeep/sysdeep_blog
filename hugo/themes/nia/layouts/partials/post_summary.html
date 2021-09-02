@@ -1,0 +1,44 @@
+<div class="py-2" style="margin-bottom: 1rem;">
+	<div >
+		<!-- <span class="f6 db">{{ humanize .Section }}</span> -->
+		<h3>
+			<a href="{{ .URL }}">
+				{{ .Title }}
+			</a>
+		</h3>
+
+		
+
+		<!-- {{ .Params.tags }}
+		{{ .Params.categories }} -->
+
+		<div>
+			{{ .Summary  }}
+		</div>
+
+
+		{{ if .Truncated }}
+
+			<a href="{{ .URL }}" class="mt-2">
+				Далее
+			</a>
+		{{ end }}
+
+
+		<div class="mt-2">
+			<span>
+				<i class="fa fa-calendar-o" aria-hidden="true"></i> {{ .Date.Format "2006-01-02 15:04:05" }}
+			</span>
+
+			<span class="ml-2">
+				<i class="fa fa-tags" aria-hidden="true"></i>
+				{{ range (.GetTerms "tags") }}
+					<span class="label mb-1">
+						<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+					</span>
+				{{ end }}
+			<span>
+		</div>
+
+	</div>
+</div>
