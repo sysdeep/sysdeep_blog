@@ -14,15 +14,31 @@
 
 	<div>
 		<div>
-			{{ .Date.Format "2006-01-02 15:04:05" }}
+			<i class="fa fa-calendar-o" aria-hidden="true"></i> {{ .Date.Format "2006-01-02 15:04:05" }}
 		</div>	
 
-	    {{ range (.GetTerms "tags") }}
-	    	<span class="label mb-1">
-	        	<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
-	    	</span>
-	    {{ end }}
+		<div>
+			
+			{{ range (.GetTerms "categories") }}
+				<i class="fa fa-folder-o" aria-hidden="true"></i> <a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+			{{ end }}
+		</div>
+
+		<div>
+			<i class="fa fa-tags" aria-hidden="true"></i>
+			{{ range (.GetTerms "tags") }}
+				<span class="label mb-1">
+					<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+				</span>
+			{{ end }}
+		</div>
+
+
 	</div>
+
+
+
+	<!-- <hr> -->
 
 	<aside class="float-right">
 		<div class="card">
@@ -36,6 +52,22 @@
 
 	<div class="mt-2">
 			{{ .Content }}
+	</div>
+
+
+
+	<div class="columns my-2">
+		<div class="col-6">
+			
+			{{ with .PrevInSection }}
+			  <a class="previous" href="{{.Permalink}}"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> {{.Title}}</a>
+			{{ end }}
+		</div>
+		<div class="col-6 text-right">
+			{{ with .NextInSection }}
+			  <a class="next" href="{{.Permalink}}">{{.Title}} <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+			{{ end }}
+		</div>
 	</div>
 
 

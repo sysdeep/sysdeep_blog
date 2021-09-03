@@ -1,0 +1,90 @@
+{{ define "main" }}
+	
+
+	<!-- main header -->
+	<div class="hero bg-gray">
+		<div class="hero-body">
+			<h1>{{.Title}}</h1>
+			{{ with .Params.subtitle }}
+        		<p>{{.}}</p>
+        	{{ end }}
+			
+		</div>
+	</div>
+
+	
+	<!-- main content -->
+	<p>{{.Content}}</p>
+
+
+	
+
+
+
+	<div class="">
+		<section id="main">
+			<div class="main-body-content">
+
+
+
+
+
+				 <div class="card">
+					<div class="card-header">
+						<div class="card-title h5">All content sections</div>
+						</div>
+					<div class="card-body">
+						<ul>
+							<!-- Ranges through content/posts/*.md -->
+						{{ range .Pages }}
+							<li>
+								<a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+							</li>
+						{{ end }}
+						</ul>
+		
+					</div>
+				</div>
+				
+
+
+			
+
+				<!-- {{ $section := where .Data.Pages "Type" "main" }} -->
+				{{ $section := .Data.Pages }}
+				{{ range $section }}
+
+					<div class="card">
+						<div class="card-header">
+							<div class="card-title h5">
+								<h2>{{.Title}}</h2>
+							</div>
+						</div>
+							
+						<div class="card-body">
+							{{ .Content }}
+							<ul>
+								<!-- Ranges through content/posts/*.md -->
+							{{ range .Pages }}
+								{{ partial "post_summary.html" . }}
+
+								<!-- <li>
+									<a href="{{.Permalink}}">{{.Date.Format "2006-01-02"}} | {{.Title}}</a>
+								</li> -->
+							{{ end }}
+							</ul>
+						</div>
+
+					</div>
+
+					
+				{{ end }}
+			</div>
+		</section>
+	</div>
+
+
+
+
+
+{{ end }}
