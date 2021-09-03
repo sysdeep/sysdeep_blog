@@ -1,0 +1,105 @@
+{{ define "main" }}
+
+<!-- 
+
+шаблон для tags/categories...
+
+ -->
+default/terms
+
+<div>
+   	<h3>{{ .Title }}</h3>
+
+
+
+   	<ul>
+	{{ range $key, $term := .Data.Terms.Alphabetical }}
+		<li>
+			<a href="{{ $term.Page.Permalink }}">
+				<strong>{{ $term.Page.Title }}</strong>
+			</a>
+
+			<!-- <span class="label label-rounded1 label-primary"> -->
+	  	 		{{ .Count }}
+			<!-- </span> -->
+
+	  		<ul>
+		  	{{ range $page := $term.WeightedPages }}
+		  		<li><a class="w3-button taxonomy-text-button"  href='{{ .RelPermalink}}'> {{ .Title  | markdownify | emojify }} </a></li>
+		  	{{ end }}
+	  		</ul>
+	  	</li>
+	{{end}}
+  	</ul>
+
+
+
+
+
+
+
+
+   	<div class="columns">
+   		<div class="col-9">
+
+
+   		<!-- 	<ul>
+			{{ range .Pages }}
+				<li>
+							<a href="{{ .Permalink }}">
+								{{ .Title }} {{ . }}
+							</a>
+						</li>
+
+			{{ end }}
+			</ul> -->
+   		</div>
+   		<div class="col-3">
+   			<!-- <div class="card">
+				<div class="card-body">
+					<ul>
+					{{ range .Site.Taxonomies.tags }}
+						<li>
+							<a href="{{ .Page.Permalink }}">
+								{{ .Page.Title }} {{ .Count }}
+							</a>
+						</li>
+					{{ end }}
+					</ul>
+				</div>
+			</div> -->
+   		</div>
+   	</div>
+
+		<!-- page terms -->
+		<!-- <hr>
+		<h6>Terms</h6>
+		<ul>
+		{{ range .Data.Terms }}
+			<li>
+				<a href="{{ .Page.Permalink }}">
+					{{ .Page.Title }} {{ .Count }}
+
+							</a>
+			</li>
+			
+			
+		{{ end }}
+		</ul> -->
+		<!-- <hr> -->
+
+
+
+
+
+		
+
+
+
+
+
+	
+
+</div>
+	
+{{ end }}

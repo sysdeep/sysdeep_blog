@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+
+tags/list
+
+<div>
+   	<h3>{{ .Title }}</h3>
+
+   	{{ .Data }}
+
+
+
+
+   	<div class="columns">
+   		<div class="col-9">
+
+
+
+			{{ range .Pages }}
+				{{ partial "post_summary.html" . }}
+			{{ end }}
+   		</div>
+   		<div class="col-3">
+   			<div class="card">
+				<div class="card-body">
+					<ul>
+					{{ range .Site.Taxonomies.tags }}
+						<li>
+							<a href="{{ .Page.Permalink }}">
+								{{ .Page.Title }} {{ .Count }}
+							</a>
+						</li>
+					{{ end }}
+					</ul>
+				</div>
+			</div>
+   		</div>
+   	</div>
+
+		<!-- page terms -->
+		<!-- <hr>
+		<h6>Terms</h6>
+		<ul>
+		{{ range .Data.Terms }}
+			<li>
+				<a href="{{ .Page.Permalink }}">
+					{{ .Page.Title }} {{ .Count }}
+
+							</a>
+			</li>
+			
+			
+		{{ end }}
+		</ul> -->
+		<!-- <hr> -->
+
+
+
+
+
+		
+
+
+
+
+
+	
+
+</div>
+	
+{{ end }}
