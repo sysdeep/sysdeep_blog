@@ -6,9 +6,23 @@ default/taxonomy
 <div>
    	<h3>{{ .Title }}</h3>
 
-   	{{ .Data.Term }}
-   	{{ .GetTerms .Data.Term }}
+   	<!-- {{ .Data.Term }}
+   	{{ .GetTerms "tags" }} -->
 
+   	<!-- <hr> -->
+   	<!-- {{ $term_name := .Data.Plural }}
+   	{{ range $key, $value := .Site.Taxonomies }}
+   			{{ $key }} == [{{ .Data.Plural }}]
+   		{{ if eq $term_name $key  }}
+   			qqqqqqq ===
+   			{{ $value }}
+   		{{ end }}
+   	{{ end }} -->
+   	<!-- <hr> -->
+   	<!-- {{ .Data }} -->
+   	<!-- <hr> -->
+   	<!-- {{ .Data.Plural }} -->
+   	<!-- <hr> -->
   
 
    	<div class="columns">
@@ -23,6 +37,34 @@ default/taxonomy
    		<div class="col-3">
    			<div class="card">
 				<div class="card-body">
+
+
+						{{ $term_name := .Data.Plural }}
+   						{{ range $key, $value := .Site.Taxonomies }}
+   							
+   							{{ if eq $term_name $key  }}
+   			
+   								<ul>
+								{{ range $value }}
+									<li>
+										<a href="{{ .Page.Permalink }}">
+											{{ .Page.Title }} {{ .Count }}
+										</a>
+									</li>
+								{{ end }}
+								</ul>
+
+   							{{ end }}
+   						{{ end }}
+
+					
+
+					<!-- old only tags -->
+					<!-- <hr>
+
+
+
+
 					<ul>
 					{{ range .Site.Taxonomies.tags }}
 						<li>
@@ -31,7 +73,9 @@ default/taxonomy
 							</a>
 						</li>
 					{{ end }}
-					</ul>
+					</ul> -->
+
+
 				</div>
 			</div>
    		</div>

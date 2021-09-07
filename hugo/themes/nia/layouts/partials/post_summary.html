@@ -30,6 +30,8 @@
 				<i class="fa fa-calendar-o" aria-hidden="true"></i> {{ .Date.Format "2006-01-02 15:04:05" }}
 			</span>
 
+			{{ $tags := .GetTerms "tags" }}
+			{{ if gt (len $tags) 0 }}
 			<span class="ml-2">
 				<i class="fa fa-tags" aria-hidden="true"></i>
 				{{ range (.GetTerms "tags") }}
@@ -38,6 +40,20 @@
 					</span>
 				{{ end }}
 			<span>
+			{{ end }}
+
+
+			{{ $categories := .GetTerms "categories" }}
+			{{ if gt (len $categories) 0 }}
+			<span class="ml-2">
+				<i class="fa fa-folder" aria-hidden="true"></i>
+				{{ range $categories }}
+					<span class="label mb-1">
+						<a href="{{ .Permalink }}">{{ .LinkTitle }}</a>
+					</span>
+				{{ end }}
+			<span>
+			{{ end }}
 		</div>
 
 	</div>

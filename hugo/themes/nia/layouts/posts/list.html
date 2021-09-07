@@ -40,7 +40,7 @@
 
 							{{ range $key, $value := $taxonomy }}
 							<span class="label mb-1">
-								<a href='{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}'> {{ $key }} </a>
+								<a href='{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}{{ "/" | relLangURL}}{{ $key | urlize }}'> {{ $key }} {{ .Count }}</a>
 							</span>
 							  {{ end }}
 
